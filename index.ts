@@ -47,3 +47,55 @@ function WithTemplate(template: string, hookId: string) {
 class Elements {
     constructor(public name: string) {}
 }
+
+// Property Decorator
+function PropDec(target: any /*Refer to Object */, prop: any /*Refer to Property*/) {
+    console.log(target,prop)
+}
+
+// Method Decorator
+function MethodDecorator(target: any, name: any, description: PropertyDescriptor) {
+    console.log('Method Decorator')
+    console.log(target)
+    console.log(name)
+    console.log(description)
+}
+
+// Accessor Decorator
+function AccessorDecorator(target: any, name: any, description: PropertyDescriptor) {
+    console.log('Accessor Decorator')
+    console.log(target)
+    console.log(name)
+    console.log(description)
+}
+
+
+// Parameter Decorator
+function ParamDec(target: any, name: string | symbol, position: number) {
+    console.log('Parameter Decorator');
+    console.log(target)
+    console.log(name)
+    console.log(position)
+}
+
+class Product {
+    @PropDec
+    private _price: number = 2000;
+    constructor(protected readonly key: string, name: string) {}
+
+    @AccessorDecorator
+    set price(val: number) {
+        this._price = val;
+    }
+    
+    get price() {
+        return this._price
+    }
+
+    @MethodDecorator
+    testMethod(@ParamDec param: string) {
+        console.log(param)
+    }
+}
+
+const AdidasNeon = new Product('32A', 'Adidas Neon')
