@@ -21,7 +21,7 @@ var Person = /** @class */ (function () {
     return Person;
 }());
 var Ihsan = new Person('Ihsan', 18);
-console.log(Ihsan);
+// console.log(Ihsan)
 // 2. Decorators in Function Builder
 var Logger = function (params) {
     return function (constructor) {
@@ -40,4 +40,24 @@ var Students = /** @class */ (function () {
     return Students;
 }());
 var Andi = new Person('Andi', 18);
-console.log(Andi);
+// console.log(Andi)
+// Useful Decorators for templating
+function WithTemplate(template, hookId) {
+    return function (constructor) {
+        var hookEl = document.getElementById(hookId);
+        var p = new constructor('ihsan');
+        if (hookEl) {
+            hookEl.innerHTML = template;
+            document.querySelector('h1').textContent = p.name;
+        }
+    };
+}
+var Elements = /** @class */ (function () {
+    function Elements(name) {
+        this.name = name;
+    }
+    Elements = __decorate([
+        WithTemplate('<h1>KSJALA</h1>', 'app')
+    ], Elements);
+    return Elements;
+}());

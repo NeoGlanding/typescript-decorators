@@ -11,7 +11,7 @@ class Person {
 }
 
 const Ihsan = new Person('Ihsan', 18);
-console.log(Ihsan)
+// console.log(Ihsan)
 
 // 2. Decorators in Function Builder
 const Logger = (params: string) => {
@@ -28,4 +28,22 @@ class Students {
 }
 
 const Andi = new Person('Andi', 18);
-console.log(Andi)
+// console.log(Andi)
+
+
+// Useful Decorators for templating
+function WithTemplate(template: string, hookId: string) {
+    return function (constructor: any) {
+        const hookEl = document.getElementById(hookId);
+        let p = new constructor('ihsan');
+        if (hookEl) {
+            hookEl.innerHTML = template;
+            document.querySelector('h1')!.textContent = p.name
+        }
+    }
+}
+
+@WithTemplate('<h1>KSJALA</h1>', 'app')
+class Elements {
+    constructor(public name: string) {}
+}
