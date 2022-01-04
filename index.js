@@ -5,9 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 // 1. Basic Decorators
 function Logger1(constructor) {
     console.log('Log');
@@ -89,34 +86,20 @@ function ParamDec(target, name, position) {
     console.log(name);
     console.log(position);
 }
-var Product = /** @class */ (function () {
-    function Product(key, name) {
-        this.key = key;
-        this._price = 2000;
-    }
-    Object.defineProperty(Product.prototype, "price", {
-        get: function () {
-            return this._price;
-        },
-        set: function (val) {
-            this._price = val;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Product.prototype.testMethod = function (param) {
-        console.log(param);
-    };
-    __decorate([
-        PropDec
-    ], Product.prototype, "_price", void 0);
-    __decorate([
-        AccessorDecorator
-    ], Product.prototype, "price", null);
-    __decorate([
-        MethodDecorator,
-        __param(0, ParamDec)
-    ], Product.prototype, "testMethod", null);
-    return Product;
-}());
-var AdidasNeon = new Product('32A', 'Adidas Neon');
+// class Product {
+//     @PropDec
+//     private _price: number = 2000;
+//     constructor(protected readonly key: string, name: string) {}
+//     @AccessorDecorator
+//     set price(val: number) {
+//         this._price = val;
+//     }
+//     get price() {
+//         return this._price
+//     }
+//     @MethodDecorator
+//     testMethod(@ParamDec param: string) {
+//         console.log(param)
+//     }
+// }
+// const AdidasNeon = new Product('32A', 'Adidas Neon')

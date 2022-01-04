@@ -78,24 +78,24 @@ function ParamDec(target: any, name: string | symbol, position: number) {
     console.log(position)
 }
 
-class Product {
-    @PropDec
-    private _price: number = 2000;
-    constructor(protected readonly key: string, name: string) {}
+// class Product {
+//     @PropDec
+//     private _price: number = 2000;
+//     constructor(protected readonly key: string, name: string) {}
 
-    @AccessorDecorator
-    set price(val: number) {
-        this._price = val;
-    }
+//     @AccessorDecorator
+//     set price(val: number) {
+//         this._price = val;
+//     }
     
-    get price() {
-        return this._price
-    }
+//     get price() {
+//         return this._price
+//     }
 
-    @MethodDecorator
-    testMethod(@ParamDec param: string) {
-        console.log(param)
-    }
-}
+//     @MethodDecorator
+//     testMethod(@ParamDec param: string) {
+//         console.log(param)
+//     }
+// }
 
-const AdidasNeon = new Product('32A', 'Adidas Neon')
+// const AdidasNeon = new Product('32A', 'Adidas Neon')
